@@ -1,0 +1,1 @@
+select * from dbt_denormalized.source.computer_sales_1st_batch

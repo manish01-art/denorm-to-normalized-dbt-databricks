@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: stg_sales
+
+    columns:
+
+      - name: quantity
+        tests:
+          - not_null
+
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+              max_value: 1000
+
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+
+      - name: salesamount
+        tests:
+          - not_null
+
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: country
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[A-Za-z ]+$'
+
+      - name: is_country_valid
+        tests:
+          - accepted_values:
+              values: [true, false]
+
+      - name: is_column_valid
+        tests:
+          - accepted_values:
+              values:
+                - Valid
+                - Invalid
+
+      - name: source_batch
+        tests:
+          - not_null

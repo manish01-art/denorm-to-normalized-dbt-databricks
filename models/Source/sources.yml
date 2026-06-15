@@ -1,0 +1,9 @@
+version: 2
+
+sources: 
+  - name: source
+    database: dbt_denormalized
+    schema: source
+
+    tables:
+    - name: computer_sales_1st_batch  
