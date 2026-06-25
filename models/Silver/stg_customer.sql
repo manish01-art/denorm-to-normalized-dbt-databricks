@@ -2,7 +2,9 @@
 
 select distinct
 
-    md5(customer_name) as customer_key,
+    {{ dbt_utils.generate_surrogate_key(
+    ['customer_name','country']
+) }} as customer_key,
 
     customer_name,
 

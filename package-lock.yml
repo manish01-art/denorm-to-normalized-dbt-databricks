@@ -1,11 +1,11 @@
 packages:
-  - git: https://github.com/metaplane/dbt-expectations.git
-    name: dbt_expectations
-    revision: bdb8f8e668da2743036a81fa95565d5787a56532
-  - name: dbt_utils
-    package: dbt-labs/dbt_utils
-    version: 1.1.1
-  - name: dbt_date
-    package: calogica/dbt_date
-    version: 0.10.1
-sha1_hash: ce4f8115033fa67ecbfc91787768fc0df843ccd9
+- package: calogica/dbt_date
+  name: dbt_date
+  version: 0.10.1
+- git: https://github.com/metaplane/dbt-expectations.git
+  name: dbt_expectations
+  revision: bdb8f8e668da2743036a81fa95565d5787a56532
+- package: dbt-labs/dbt_utils
+  name: dbt_utils
+  version: 1.1.1
+sha1_hash: 1cff920d6058a63939555def6d395b4e6b338501
