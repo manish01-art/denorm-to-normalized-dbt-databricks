@@ -29,6 +29,28 @@ jobs:
         run: |
           pip install dbt-databricks
 
+      - name: Create dbt profile
+        run: |
+          mkdir -p ~/.dbt
+
+          cat <<EOF > ~/.dbt/profiles.yml
+          denorm_to_norm:
+            target: dev
+            outputs:
+              dev:
+                type: databricks
+                host: ${{ secrets.DATABRICKS_HOST }}
+                http_path: ${{ secrets.DATABRICKS_HTTP_PATH }}
+                token: ${{ secrets.DATABRICKS_TOKEN }}
+                catalog: ${{ secrets.DATABRICKS_CATALOG }}
+                schema: ${{ secrets.DATABRICKS_SCHEMA }}
+                threads: 1
+          EOF
+
+      - name: Validate Connection
+        run: |
+          dbt debug
+
       - name: Install Packages
         run: |
           dbt deps
