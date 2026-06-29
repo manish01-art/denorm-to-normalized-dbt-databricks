@@ -62,3 +62,7 @@ jobs:
       - name: Compile Project
         run: |
           dbt compile
+
+      - name: Build dbt Project
+        run: |
+          dbt build
